@@ -1,0 +1,23 @@
+
+
+.form-control{
+    background: #f5f5f5;
+    border: none;
+    padding: 15px;
+}
+
+.form-control:focus{
+    box-shadow: none;
+    border: 1px solid #db4444;
+}
+
+.contact-btn{
+    background: #db4444;
+    color: white;
+    padding: 12px 35px;
+}
+
+.contact-btn:hover{
+    background: #c52f2f;
+    color: white;
+}
