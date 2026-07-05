@@ -1,8 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "../../shareconpnents/AppHeader";
+
 import Sidebar from "../../shareconpnents/AppSidebar";
-import Footer from "../../shareconpnents/AppFooter";
+
 
 
 const cartItems = [
@@ -37,7 +37,7 @@ function Cart() {
 
 return (
   <>
-    <Navbar />
+    
 
     <div className="d-flex">
       <Sidebar />
@@ -130,7 +130,7 @@ return (
       </div>
     </div>
 
-    <Footer />
+  
   </>
 );
   

@@ -1,11 +1,15 @@
-import react from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from "react-router-dom";
+import Navbar from "../../shareconpnents/AppHeader";
+import Footer from "../../shareconpnents/AppFooter";
 
-
-function BlankLayout() {
-    return(
-        <Outlet></Outlet>
-    )
-    
+function UserLayout() {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
+  );
 }
-export default BlankLayout;
+
+export default UserLayout;

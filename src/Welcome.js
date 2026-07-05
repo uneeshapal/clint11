@@ -1,6 +1,6 @@
 import Contant from "./modules/shareconpnents/AppContant"
-import Navbar from "./modules/shareconpnents/AppHeader";
-import Footer from "./modules/shareconpnents/AppFooter";
+import Sidebar from "./modules/shareconpnents/AppSidebar";
+
 import WomenCollection from "./modules/shareconpnents/AppWomen";
 
 import { FaHeart } from "react-icons/fa";
@@ -80,30 +80,12 @@ function Welcome() {
     ];
     return (
         <>
-            <Navbar />
+          
 
             {/* side hero */}
             <div className="container mt-4">
                 <div className="row">
-                    <div className="col-md-3 border-end">
-                        <ul className="list-unstyled">
-                            <li className="mb-3">
-                                <Link
-                                    to="/women"
-                                    className="text-decoration-none text-dark"
-                                >
-                                
-                                    Women's Fashion
-                                </Link>
-                            </li>
-                            <li className="mb-3">Men's Fashion</li>
-                            <li className="mb-3">Electronics</li>
-                            <li className="mb-3">Home & Lifestyle</li>
-                            <li className="mb-3">Medicine</li>
-                            <li className="mb-3">Sports & Outdoor</li>
-                            <li className="mb-3">Health & Beauty</li>
-                        </ul>
-                    </div>
+                    <Sidebar/>
 
                     <div className="col-md-9">
                         <div className=" text-black p-5 rounded"
@@ -226,7 +208,7 @@ function Welcome() {
             </div>
             <Contant />
 
-            <Footer />
+          
         </>
     );
 }

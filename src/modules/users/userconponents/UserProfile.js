@@ -1,8 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { baseurl } from "../../../services/Urlpath.js";
-import Navbar from "../../shareconpnents/AppHeader";
-import Footer from "../../shareconpnents/AppFooter";
 
 import {
   FaBoxOpen,
@@ -47,7 +45,7 @@ useEffect(() => {
 }, []);
   return (
     <>
-      <Navbar />
+   
 
       <div className="container-fluid bg-light min-vh-100">
         <div className="row">
@@ -161,7 +159,7 @@ useEffect(() => {
         </div>
       </div>
 
-      <Footer />
+ 
     </>
   );
 }

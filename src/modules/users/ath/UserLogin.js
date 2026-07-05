@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaUser, FaLock,FaBoxOpen } from "react-icons/fa";
-import Navbar from "../../shareconpnents/AppHeader.js";
-import Footer from "../../shareconpnents/AppFooter.js";
+
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
@@ -66,7 +65,7 @@ function Login() {
 
     return (
         <>
-            <Navbar />
+         
 
             {/* Login Form */}
             <div className="container py-5 d-flex justify-content-center align-items-center">
@@ -134,7 +133,7 @@ function Login() {
                 </div>
             </div>
 
-            <Footer />
+           
         </>
     );
 }

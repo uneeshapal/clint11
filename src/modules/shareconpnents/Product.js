@@ -1,14 +1,17 @@
 // src/modules/sharecomponents/ProductDetails.js
-import Navbar from "./AppHeader";
-import Footer from "./AppFooter";
-import { useLocation } from "react-router-dom";
+
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 function ProductDetails() {
   const { state } = useLocation();
   const product = state;
+
+const navigate = useNavigate();
   const addtocart = () => {
 
   const email = sessionStorage.getItem("currentuser");
+    console.log("Email:", email);
+  console.log("Product:", product);
 
   axios.post("http://localhost:8700/addcart", {
     email: email,
@@ -32,7 +35,7 @@ function ProductDetails() {
   return (
 
  <>
-  <Navbar />
+
 
   <div className="container py-5">
     <div className="row bg-white shadow rounded p-4">
@@ -141,9 +144,16 @@ function ProductDetails() {
   🛒 Add to Cart
 </button>
 
-          <button className="btn btn-danger px-5">
-            Buy Now
-          </button>
+        <button
+  className="btn btn-danger"
+  onClick={() =>
+    navigate("/women/product/buynow", {
+      state: product
+    })
+  }
+>
+  Buy Now
+</button>
 
         </div>
 
@@ -185,7 +195,7 @@ function ProductDetails() {
     >
       Back to Home
     </button>
-  <Footer />
+ 
 </>
   );
   

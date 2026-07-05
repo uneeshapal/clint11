@@ -1,8 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
-import Navbar from "../../shareconpnents/AppHeader.js";
-import Footer from "../../shareconpnents/AppFooter.js";
+
 import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -38,7 +37,7 @@ const mysubmit = async (data) => {
 };
     return (
         <>
-            <Navbar />
+         
 
             <div className="container py-5 d-flex justify-content-center align-items-center">
                 <img
@@ -198,7 +197,7 @@ const mysubmit = async (data) => {
                 </div>
             </div>
 
-            <Footer />
+       
         </>
     );
 }

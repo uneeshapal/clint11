@@ -1,7 +1,6 @@
 
 import React from "react";
-import Navbar from "./AppHeader";
-import Footer from "./AppFooter";
+
 import Sidebar from "./AppSidebar"
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
@@ -70,7 +69,7 @@ function WomenCollection() {
 
   return (
 <>
-  <Navbar />
+
 
   <div className="container mt-4">
     <div className="row">
@@ -115,7 +114,7 @@ function WomenCollection() {
   className="btn text-white w-100"
   style={{ backgroundColor: "brown" }}
   onClick={() =>
-    navigate("/product", {
+    navigate("/women/product", {
       state: item,
     })
   }
@@ -142,7 +141,7 @@ function WomenCollection() {
   </div>
 
 
-  <Footer />
+ 
 </>
   );
 }
