@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FaUser, FaLock,FaBoxOpen } from "react-icons/fa";
 
 import { useNavigate } from "react-router-dom";
-
+import Navbar from "../../shareconpnents/AppHeader.js";
+import Footer from "../../shareconpnents/AppFooter.js";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -66,7 +67,7 @@ function Login() {
     return (
         <>
          
-
+          <Navbar />
             {/* Login Form */}
             <div className="container py-5 d-flex justify-content-center align-items-center">
                 <img
@@ -133,7 +134,7 @@ function Login() {
                 </div>
             </div>
 
-           
+          <Footer /> 
         </>
     );
 }

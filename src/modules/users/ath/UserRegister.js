@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from "../../shareconpnents/AppHeader";
+import Footer from "../../shareconpnents/AppFooter";
+
 
 
 const baseurl = "http://localhost:8700";
@@ -37,7 +40,7 @@ const mysubmit = async (data) => {
 };
     return (
         <>
-         
+         <Navbar />
 
             <div className="container py-5 d-flex justify-content-center align-items-center">
                 <img
@@ -196,7 +199,7 @@ const mysubmit = async (data) => {
                     </form>
                 </div>
             </div>
-
+<Footer/>
        
         </>
     );

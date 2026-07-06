@@ -2,14 +2,11 @@ import React from "react";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import "../../css/global.css";
 
-import Navbar from "./AppHeader";
-import Footer from "./AppFooter";
 
 function Contact() {
     return (
         <>
-            <Navbar />
-
+         
             <div className="container my-5">
                 <div className="row g-4">
                     {/* left */}
@@ -104,7 +101,7 @@ function Contact() {
             </div>
 
 
-            <Footer />
+         
         </>
     );
 }
