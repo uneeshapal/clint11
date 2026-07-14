@@ -1,6 +1,8 @@
 
 import react from "react";
+import { useNavigate } from "react-router-dom";
 function Project() {
+    const navigate = useNavigate();
     return (
         <div className="container my-5">
             <h2 className="fw-bold mb-4">New Arrival</h2>
@@ -17,9 +19,12 @@ function Project() {
                         <div className="position-absolute bottom-0 start-0 p-4">
                             <h3>PlayStation 5</h3>
                             <p>Black and White version of the PS5</p>
-                            <button className="btn btn-light btn-sm">
-                                Shop Now
-                            </button>
+                                                        <button
+    className="btn btn-light btn-sm"
+    onClick={() => navigate("/men")}
+>
+    Shop Now
+</button>
                         </div>
                     </div>
                 </div>
@@ -37,11 +42,14 @@ function Project() {
 
                     >
                         <div className="position-absolute bottom-0 start-0 p-4">
-                            <h3>PlayStation 5</h3>
-                            <p className="">Women's Collections</p>
-                            <button className="btn btn-light btn-sm">
-                                Shop Now
-                            </button>
+                            <h3>Women's Collections</h3>
+                            <p className="">Discover our latest women's collection</p>
+                            <button
+    className="btn btn-light btn-sm"
+    onClick={() => navigate("/women")}
+>
+    Shop Now
+</button>
                         </div>
                     </div>
 
@@ -64,9 +72,13 @@ function Project() {
                                 <div className="position-absolute bottom-0 start-0 p-3">
                                     <h5>Speakers</h5>
                                     <p>Amazon wireless speakers</p>
-                                    <button className="btn btn-light btn-sm">
-                                        Shop Now
-                                    </button>
+                                                                                         <button
+    className="btn btn-light btn-sm"
+    onClick={() => navigate("/electronics")}
+>
+    Shop Now
+</button>
+           
                                 </div>
                             </div>
                         </div>
@@ -86,9 +98,13 @@ function Project() {
                                 <div className="position-absolute bottom-0 start-0 p-3">
                                     <h5>Perfume</h5>
                                     <p>GUCCI INTENSE OUD EDP</p>
-                                    <button className="btn btn-light btn-sm">
-                                        Shop Now
-                                    </button>
+                                                                                           <button
+    className="btn btn-light btn-sm"
+    onClick={() => navigate("/beauty")}
+>
+    Shop Now
+</button>
+           
                                 </div>
                             </div>
                         </div>

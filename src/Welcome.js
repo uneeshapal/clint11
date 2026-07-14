@@ -1,12 +1,13 @@
 import Contant from "./modules/shareconpnents/AppContant"
 import Sidebar from "./modules/shareconpnents/AppSidebar";
-
+import { useNavigate } from "react-router-dom";
 import WomenCollection from "./modules/shareconpnents/AppWomen";
 
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Welcome() {
+    const navigate = useNavigate();
     const products = [
         {
             id: 1,
@@ -80,12 +81,12 @@ function Welcome() {
     ];
     return (
         <>
-          
+
 
             {/* side hero */}
             <div className="container mt-4">
                 <div className="row">
-                    <Sidebar/>
+                    <Sidebar />
 
                     <div className="col-md-9">
                         <div className=" text-black p-5 rounded"
@@ -103,9 +104,7 @@ function Welcome() {
             </div>
 
             {/* sale */}
-            <button className="btn btn-warning my-3 mx-4 float-end">
-                Shop Now
-            </button>
+          
             <div className="container my-5">
 
                 <h2 className="mb-4">Flash Sales</h2>
@@ -138,9 +137,23 @@ function Welcome() {
                                     />
                                 </div>
 
-                                <div className="card-body">
-                                    <h5>{product.name}</h5>
-                                    <p>{product.price}</p>
+                                <div className="card-body text-center">
+                                    <h5>{bestSellingProducts.name}</h5>
+
+                                    <p className="fw-bold text-danger">
+                                        {bestSellingProducts.price}
+                                    </p>
+
+                                    <button
+                                        className="btn btn-warning w-100"
+                                        onClick={() =>
+                                            navigate("/women/product", {
+                                                state: product,
+                                            })
+                                        }
+                                    >
+                                        View Details
+                                    </button>
                                 </div>
 
 
@@ -157,9 +170,7 @@ function Welcome() {
             {/* best selling products */}
 
             <div className="container my-5">
-                <h2 className="mb-4">Best Selling Product <button className="btn btn-warning mb-3 float-end">
-                    Shop Now
-                </button></h2>
+                <h2 className="mb-4">Best Selling Product </h2>
 
                 <div className="row g-4">
                     {bestSellingProducts.map((bestSellingProducts) => (
@@ -189,10 +200,23 @@ function Welcome() {
                                         style={{ height: "220px", objectFit: "cover" }}
                                     />
                                 </div>
-
-                                <div className="card-body">
+                                <div className="card-body text-center">
                                     <h5>{bestSellingProducts.name}</h5>
-                                    <p>{bestSellingProducts.price}</p>
+
+                                    <p className="fw-bold text-danger">
+                                        {bestSellingProducts.price}
+                                    </p>
+
+                                    <button
+                                        className="btn btn-warning w-100"
+                                        onClick={() =>
+                                            navigate("/women/product", {
+                                                state: bestSellingProducts,
+                                            })
+                                        }
+                                    >
+                                        View Details
+                                    </button>
                                 </div>
 
 
@@ -208,7 +232,7 @@ function Welcome() {
             </div>
             <Contant />
 
-          
+
         </>
     );
 }

@@ -1,13 +1,12 @@
 
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./AppHeader";
-import Footer from "./AppFooter";
+
 
 function OurStory() {
   return (
     <>
-      <Navbar />
+     
 
       <div className="container py-5">
         <div className="row align-items-center g-5">
@@ -55,7 +54,7 @@ function OurStory() {
         </div>
       </div>
 
-      <Footer />
+    
     </>
   );
 }

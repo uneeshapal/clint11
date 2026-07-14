@@ -45,7 +45,7 @@ function Sidebar() {
 
         <li className="mb-3">
           <Link to="/beauty" className="sidebar-link">
-            Health & Beauty
+            Skincare & Makeup
           </Link>
         </li>
 

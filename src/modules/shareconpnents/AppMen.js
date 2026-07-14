@@ -55,7 +55,7 @@ function MenCollection() {
       name: "Sports Shoes",
       price: "₹2199",
       image:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
+        "https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22015298/vpavic_4278_20201030_0120.jpg?quality=90&strip=all&crop=16.666666666667,0,66.666666666667,100",
     },
     {
       id: 8,
