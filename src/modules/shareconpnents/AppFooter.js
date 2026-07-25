@@ -1,76 +1,155 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "../../css/global.css";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaTwitter,
+  FaLinkedin,
+} from "react-icons/fa";
 
 function Footer() {
-    return (
-        <footer className="bg-black text-white py-5 mb-3">
-            <div className="container" >
-                <div className="row">
-                    <div className="col-md-3">
-                        <h5>Exclusive</h5>
-                        <h6>Subscribe:</h6>
-                        <p>Get 10% off your first order</p>
+  return (
+    <footer
+      className="bg-dark text-white mt-5"
+      style={{ width: "100%" }}
+    >
+      <div className="container py-5">
+        <div className="row">
 
-                        <div className="input-group">
-                            <input type="text" className="form-control bg-black text-white" placeholder="Enter your email" />
+          {/* Logo */}
+          <div className="col-lg-3 col-md-6 mb-4">
+            <h2 className="fw-bold text-danger">
+              SmartBuy
+            </h2>
 
-                            <button className="btn btn-outline-light">
-                                ➜
-                            </button>
+            <p className="text-light">
+              Your One Stop Shopping Destination.
+            </p>
 
-                        </div>
+            <h6>Subscribe</h6>
 
-                    </div>
+            <div className="input-group mt-3">
 
-                    <div className="col-md-3">
-                        <h6>Support</h6>
-                        <p>111 Bijoy sarani, Dhaka</p>
-                        <p>exclusive@gmail.com</p>
-                        <p>+88015-88888-9999</p>
-                    </div>
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Enter Email"
+              />
 
-                    <div className="col-md-2">
-                        <h6>Account</h6>
-                        <p>My Account</p>
-                        <p>Login/Register</p>
-                        <p>Cart</p>
-                        <p>Shop</p>
-                    </div>
-
-                    <div className="col-md-2">
-                        <h6>Quick Link</h6>
-                        <p>Privacy Policy</p>
-                        <p>Terms Of Use</p>
-                        <p>FAQ</p>
-                        <p>Contact</p>
-                    </div>
-
-                    <div className="col-md-2">
-                        <h6>Download App</h6>
-                        <p>Save $3 with App & New User Only</p>
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-                            alt="Play Store"
-                            className="img-fluid mb-2"
-                        />
-
-                        <img
-                            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-                            alt="App Store"
-                            className="img-fluid"
-                        />
-                    </div>
-
-                </div>
-
-                <hr className="text-center textsecondary mt-4"/>
-                <p className="text-center text-secondary mb-0">
-                    © Copyright SmartBuy 2026. All rights reserved
-                </p>
-
+              <button className="btn btn-danger">
+                Subscribe
+              </button>
 
             </div>
-        </footer>
-    );
+          </div>
+
+          {/* Support */}
+          <div className="col-lg-3 col-md-6 mb-4">
+
+            <h5>Support</h5>
+
+            <p>📍 Ghaziabad, Uttar Pradesh</p>
+
+            <p>📧 support@smartbuy.com</p>
+
+            <p>📞 +91 8860443705</p>
+
+          </div>
+
+          {/* Links */}
+          <div className="col-lg-2 col-md-6 mb-4">
+
+            <h5>Quick Links</h5>
+
+            <p>Home</p>
+
+            <p>About</p>
+
+            <p>Shop</p>
+
+            <Link to="/about" className="text-white text-decoration-none d-block mb-2">
+  Contact
+</Link>
+
+          </div>
+
+          {/* Account */}
+          <div className="col-lg-2 col-md-6 mb-4">
+
+            <h5>Account</h5>
+
+           <Link to="/register" className="text-white text-decoration-none d-block mb-2">
+  Login / Register
+</Link>
+
+
+
+            <Link to="/cart" className="text-white text-decoration-none d-block mb-2">
+  Cart
+</Link>
+
+          </div>
+
+          {/* Social */}
+          <div className="col-lg-2 col-md-12">
+
+            <h5>Follow Us</h5>
+
+            <div className="d-flex gap-3 fs-4 mt-3">
+
+              <FaFacebook />
+
+              <FaInstagram />
+
+              <FaTwitter />
+
+              <FaLinkedin />
+
+            </div>
+
+            <h6 className="mt-4">
+              Secure Payment
+            </h6>
+
+            <div className="d-flex gap-2 mt-2">
+
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
+                width="45"
+                className="bg-white rounded p-1"
+                alt=""
+              />
+
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                width="40"
+                className="bg-white rounded p-1"
+                alt=""
+              />
+
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/UPI-Logo-vector.svg"
+                width="45"
+                className="bg-white rounded p-1"
+                alt=""
+              />
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <hr />
+
+        <p className="text-center mb-0 text-secondary">
+          © 2026 SmartBuy. All Rights Reserved.
+        </p>
+
+      </div>
+    </footer>
+  );
 }
 
 export default Footer;

@@ -1,4 +1,5 @@
 import React from "react";
+import { FaHeart, FaStar, FaShoppingCart } from "react-icons/fa";
 import Sidebar from "./AppSidebar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,9 @@ function MenCollection() {
       id: 1,
       name: "Denim Jacket",
       price: "₹1599",
+      oldPrice: "₹2499",
+      discount: "30% OFF",
+      rating: 4.8,
       image:
         "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500",
     },
@@ -19,6 +23,9 @@ function MenCollection() {
       id: 2,
       name: "Formal Shirt",
       price: "₹999",
+      oldPrice: "₹2499",
+      discount: "30% OFF",
+      rating: 4.8,
       image:
         "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500",
     },
@@ -26,6 +33,9 @@ function MenCollection() {
       id: 3,
       name: "Leather Shoes",
       price: "₹2499",
+      oldPrice: "₹2499",
+      discount: "30% OFF",
+      rating: 4.8,
       image:
         "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
     },
@@ -33,6 +43,9 @@ function MenCollection() {
       id: 4,
       name: "Men's Watch",
       price: "₹1999",
+      oldPrice: "₹2499",
+      discount: "30% OFF",
+      rating: 4.8,
       image:
         "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=500",
     },
@@ -40,6 +53,9 @@ function MenCollection() {
       id: 5,
       name: "Hoodie",
       price: "₹1299",
+      oldPrice: "₹2499",
+      discount: "30% OFF",
+      rating: 4.8,
       image:
         "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500",
     },
@@ -47,13 +63,19 @@ function MenCollection() {
       id: 6,
       name: "Jeans",
       price: "₹1399",
+      oldPrice: "₹2499",
+      discount: "30% OFF",
+      rating: 4.8,
       image:
         "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500",
     },
     {
       id: 7,
-      name: "Sports Shoes",
+      name: "PS5 Console",
       price: "₹2199",
+      oldPrice: "₹2499",
+      discount: "30% OFF",
+      rating: 4.8,
       image:
         "https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22015298/vpavic_4278_20201030_0120.jpg?quality=90&strip=all&crop=16.666666666667,0,66.666666666667,100",
     },
@@ -61,6 +83,9 @@ function MenCollection() {
       id: 8,
       name: "Leather Wallet",
       price: "₹799",
+      oldPrice: "₹2499",
+      discount: "30% OFF",
+      rating: 4.8,
       image:
         "https://images.unsplash.com/photo-1627123424574-724758594e93?w=500",
     },
@@ -101,34 +126,79 @@ function MenCollection() {
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="card-img-top"
+                      className="card-img-top product-image"
                       style={{
                         height: "280px",
                         objectFit: "cover",
                       }}
                     />
 
-                    <div className="card-body text-center">
+                    <div className="card-body">
 
-                      <h5>{item.name}</h5>
+                      <div className="d-flex justify-content-between">
 
-                      <h6 className="fw-bold text-primary">
+                        <span className="badge bg-danger">
+                          {item.discount}
+                        </span>
+
+                        <FaHeart color="red" size={20} />
+
+                      </div>
+
+                      <h5 className="mt-3 fw-bold">
+                        {item.name}
+                      </h5>
+
+                      <div className="text-warning mb-2">
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+
+                        <span className="text-dark ms-2">
+                          ({item.rating})
+                        </span>
+
+                      </div>
+
+                      <h5 className="text-danger fw-bold">
+
                         {item.price}
-                      </h6>
 
-                      <button
-                        className="btn btn-danger w-100"
-                        onClick={() =>
-                          navigate("/men/product", {
-                            state: item,
-                          })
-                        }
-                      >
-                        View Details
-                      </button>
+                        <del className="text-secondary ms-2">
+                          {item.oldPrice}
+                        </del>
+
+                      </h5>
+
+                      <div className="d-grid gap-2 mt-3">
+
+                        <button
+                          className="btn btn-outline-dark"
+                          onClick={() =>
+                            navigate("/men/product", {
+                              state: item,
+                            })
+                          }
+                        >
+                          <FaShoppingCart /> Add to Cart
+                        </button>
+
+                        <button
+                          className="btn btn-danger"
+                          onClick={() =>
+                            navigate("/men/product", {
+                              state: item,
+                            })
+                          }
+                        >
+                          Buy Now
+                        </button>
+
+                      </div>
 
                     </div>
-
                   </div>
 
                 </div>

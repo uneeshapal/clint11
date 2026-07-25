@@ -1,40 +1,153 @@
-
-
-.form-control{
-    background: #f5f5f5;
-    border: none;
-    padding: 15px;
+body, #root {
+  min-height: 100vh;
 }
 
-.form-control:focus{
-    box-shadow: none;
-    border: 1px solid #db4444;
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.contact-btn{
-    background: #db4444;
-    color: white;
-    padding: 12px 35px;
+.content {
+  flex: 1;
 }
 
-.contact-btn:hover{
-    background: #c52f2f;
-    color: white;
+
+
+/* ---------------- Contact Form ---------------- */
+
+.form-control {
+  background: #f5f5f5;
+  border: none;
+  padding: 15px;
 }
+
+.form-control:focus {
+  box-shadow: none;
+  border: 1px solid #db4444;
+}
+
+.contact-btn {
+  background: #db4444;
+  color: white;
+  padding: 12px 35px;
+  border-radius: 8px;
+}
+
+.contact-btn:hover {
+  background: #c52f2f;
+  color: white;
+}
+
+/* ---------------- Sidebar ---------------- */
 
 .sidebar-link {
   display: block;
   text-decoration: none;
-  color: #212529;
-  font-size: 18px;      /* pehle se thoda chhota */
-  font-weight: 400;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: 0.3s;
+  color: #222;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 12px 15px;
+  border-radius: 10px;
+  transition: .3s;
 }
 
 .sidebar-link:hover {
-  background-color: #f5f5f5;
-  color: #0d6efd;
-  padding-left: 18px;
+  background: #db4444;
+  color: white;
+  padding-left: 20px;
+}
+
+/* ---------------- Carousel ---------------- */
+
+.carousel img {
+  height: 350px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.carousel-caption {
+  background: rgba(0,0,0,.45);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+/* ---------------- Product Cards ---------------- */
+
+.product-card {
+  border-radius: 18px;
+  overflow: hidden;
+  transition: .35s;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.2);
+}
+
+.product-image {
+  height: 280px;
+  width: 100%;
+  object-fit: cover;
+  transition: .4s;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.08);
+}
+
+/* ---------------- Buttons ---------------- */
+
+.btn-danger,
+.btn-warning,
+.btn-outline-dark,
+.btn-primary {
+  border-radius: 10px;
+}
+
+/* ---------------- Badge ---------------- */
+
+.badge {
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+/* ---------------- Heart Icon ---------------- */
+
+.heart-icon {
+  background: white;
+  padding: 8px;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+.heart-icon:hover {
+  color: red;
+  transform: scale(1.15);
+}
+
+/* ---------------- Section Heading ---------------- */
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+/* Footer */
+
+footer{
+    width:100%;
+    background:#000;
+    color:white;
+}
+
+footer .container{
+    max-width:1320px;
+}
+
+html,body,#root{
+    width:100%;
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
 }

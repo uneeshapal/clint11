@@ -1,36 +1,41 @@
 // src/modules/sharecomponents/ProductDetails.js
 
 import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
 function ProductDetails() {
   const { state } = useLocation();
   const product = state;
+  const [quantity, setQuantity] = useState(1);
+const [color, setColor] = useState("Black");
+const [size, setSize] = useState("M");
+const [pincode, setPincode] = useState("");
 
 const navigate = useNavigate();
-  const addtocart = () => {
+const addtocart = () => {
 
   const email = sessionStorage.getItem("currentuser");
-    console.log("Email:", email);
-  console.log("Product:", product);
 
   axios.post("http://localhost:8700/addcart", {
-    email: email,
+    email,
     productid: product.id,
     name: product.name,
     price: product.price,
-    image: product.image
+    image: product.image,
+    quantity,
+    color,
+    size
   })
-  .then((res) => {
-    alert("Your order is added to your cart");
+  .then(() => {
+    alert("Product Added To Cart");
   })
   .catch((err) => {
     console.log(err);
+    alert("Something went wrong");
   });
 
 };
-    const addToCart = () => {
-    alert(" Your order is added to your cart.");
-  };
+  
 
   return (
 
@@ -98,11 +103,29 @@ const navigate = useNavigate();
 
         <h5 className="mt-4">Color</h5>
 
-        <div className="d-flex gap-2">
-          <button className="btn btn-dark rounded-circle p-3"></button>
-          <button className="btn btn-danger rounded-circle p-3"></button>
-          <button className="btn btn-primary rounded-circle p-3"></button>
-        </div>
+      <div className="d-flex gap-2">
+
+<button
+className={`btn rounded-circle p-3 ${color==="Black"?"border border-3 border-warning":"btn-dark"}`}
+style={{background:"black"}}
+onClick={()=>setColor("Black")}
+></button>
+
+<button
+className={`btn rounded-circle p-3 ${color==="Red"?"border border-3 border-warning":"btn-danger"}`}
+onClick={()=>setColor("Red")}
+></button>
+
+<button
+className={`btn rounded-circle p-3 ${color==="Blue"?"border border-3 border-warning":"btn-primary"}`}
+onClick={()=>setColor("Blue")}
+></button>
+
+</div>
+
+<p className="mt-2">
+Selected Color: <b>{color}</b>
+</p>
 
         <h5 className="mt-4">Size</h5>
 
@@ -117,23 +140,49 @@ const navigate = useNavigate();
 
         <div className="d-flex align-items-center">
 
-          <button className="btn btn-outline-secondary">-</button>
+       <button
+className="btn btn-outline-secondary"
+onClick={()=>quantity>1 && setQuantity(quantity-1)}
+>
+-
+</button>
 
-          <span className="mx-3 fs-5">1</span>
+<span className="mx-3 fs-5">
+{quantity}
+</span>
 
-          <button className="btn btn-outline-secondary">+</button>
+<button
+className="btn btn-outline-secondary"
+onClick={()=>setQuantity(quantity+1)}
+>
++
+</button>
 
         </div>
+<div className="mt-4">
 
-        <div className="mt-4">
+  <input
+    type="text"
+    className="form-control w-50"
+    placeholder="Enter Pincode"
+    value={pincode}
+    onChange={(e) => setPincode(e.target.value)}
+  />
 
-          <input
-            type="text"
-            className="form-control w-50"
-            placeholder="Enter Pincode"
-          />
+  <button
+    className="btn btn-success mt-2"
+    onClick={() => {
+      if (pincode.length === 6) {
+        alert("Delivery Available");
+      } else {
+        alert("Enter Valid Pincode");
+      }
+    }}
+  >
+    Check Delivery
+  </button>
 
-        </div>
+</div>
 
         <div className="mt-4 d-flex gap-3">
 
@@ -147,10 +196,15 @@ const navigate = useNavigate();
         <button
   className="btn btn-danger"
   onClick={() =>
-    navigate("/women/product/buynow", {
-      state: product
-    })
-  }
+navigate("/women/product/buynow",{
+state:{
+...product,
+quantity,
+color,
+size
+}
+})
+}
 >
   Buy Now
 </button>

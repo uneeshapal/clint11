@@ -5,7 +5,13 @@ import axios from "axios";
 function Checkout() {
 
   const { state } = useLocation();
-  const product = state;
+  console.log(state);
+  const product = state || {
+    id: 0,
+    name: "No Product Selected",
+    price: "₹0",
+    image: "https://via.placeholder.com/500x500?text=No+Image"
+  };
 
   const [order, setOrder] = useState({
     name: "",
@@ -32,7 +38,7 @@ function Checkout() {
 
       email: sessionStorage.getItem("currentuser"),
 
-      productid: product.id,
+     productid: product.productid,
       productname: product.name,
       price: product.price,
       image: product.image,
@@ -41,12 +47,12 @@ function Checkout() {
       ...order
 
     })
-    .then((res) => {
-      alert("Order Placed Successfully");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((res) => {
+        alert("Order Placed Successfully");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
   };
 
@@ -183,17 +189,36 @@ function Checkout() {
 
             <img
               src={product.image}
-              className="img-fluid rounded mb-3"
-              alt=""
+              className="img-fluid rounded-4 shadow"
+              alt={product.name}
+              style={{
+                width: "100%",
+                height: "300px",
+                objectFit: "cover"
+              }}
             />
 
-            <h5>{product.name}</h5>
-
-            <p>Quantity : 1</p>
-
-            <h4 className="text-danger">
-              {product.price}
+            <h4 className="fw-bold mt-3">
+              {product.name}
             </h4>
+
+            <p className="text-secondary">
+              Quantity : <b>1</b>
+            </p>
+
+            <h2 className="text-danger fw-bold">
+              {product.price}
+            </h2>
+
+            <hr />
+
+            <p className="text-success">
+              ✓ In Stock
+            </p>
+
+            <p className="text-secondary">
+              Free Delivery
+            </p>
 
             <hr />
 
@@ -203,10 +228,10 @@ function Checkout() {
             </div>
 
             <button
-              className="btn btn-success w-100 mt-4"
+              className="btn btn-danger w-100 py-3 fw-bold"
               onClick={placeOrder}
             >
-              Place Order
+              Place Order Now
             </button>
 
           </div>

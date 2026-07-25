@@ -94,7 +94,7 @@ function App() {
 
         {/* User Pages */}
         <Route path="cart" element={<UserCart />} />
-        <Route path="wish" element={<WishList />} />
+        {/* <Route path="wish" element={<WishList />} /> */}
         <Route path="dash" element={<Dashboard />} />
 
       </Route>

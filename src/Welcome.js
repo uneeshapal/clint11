@@ -1,10 +1,11 @@
 import Contant from "./modules/shareconpnents/AppContant"
 import Sidebar from "./modules/shareconpnents/AppSidebar";
 import { useNavigate } from "react-router-dom";
-import WomenCollection from "./modules/shareconpnents/AppWomen";
-
+import "../src/css/global.css";
+import Carousel from "react-bootstrap/Carousel";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { FaHeart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+
 
 function Welcome() {
     const navigate = useNavigate();
@@ -89,29 +90,62 @@ function Welcome() {
                     <Sidebar />
 
                     <div className="col-md-9">
-                        <div className=" text-black p-5 rounded"
-                            style={{
-                                backgroundImage:
-                                    "url('https://www.eiosys.com/wp-content/uploads/2021/11/blog-15-Best-Email-Marketing-tools-in-2021.webp')",
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
-                                height: "350px",
-                            }}>
+                        <Carousel fade interval={3000} pause={false}>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100 rounded"
+                                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200"
+                                    alt="Slide 1"
+                                    style={{ height: "350px", objectFit: "cover" }}
+                                />
+                                <Carousel.Caption>
+                                    <h2>Big Sale</h2>
+                                    <p>Up to 70% OFF</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
 
-                        </div>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100 rounded"
+                                    src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200"
+                                    alt="Slide 2"
+                                    style={{ height: "350px", objectFit: "cover" }}
+                                />
+                                <Carousel.Caption>
+                                    <h2>Latest Smartphones</h2>
+                                    <p>New Collection Available</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100 rounded"
+                                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200"
+                                    alt="Slide 3"
+                                    style={{ height: "350px", objectFit: "cover" }}
+                                />
+                                <Carousel.Caption>
+                                    <h2>Headphones</h2>
+                                    <p>Premium Sound Quality</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        </Carousel>
                     </div>
                 </div>
             </div>
 
             {/* sale */}
-          
+
             <div className="container my-5">
 
-                <h2 className="mb-4">Flash Sales</h2>
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                    <h2>🔥 Flash Sales</h2>
+                    <button className="btn btn-danger">View All</button>
+                </div>
                 <div className="row g-4">
                     {products.map((product) => (
                         <div className="col-md-3" key={product.id}>
-                            <div className="card border-0 shadow-sm">
+                            <div className="card border-0 shadow-sm product-card">
                                 <div className="position-relative bg-light p-3">
                                     <span
                                         className="badge bg-danger position-absolute"
@@ -132,16 +166,15 @@ function Welcome() {
                                     <img
                                         src={product.image}
                                         alt={product.name}
-                                        className="card-img-top"
+                                        className="card-img-top product-image"
                                         style={{ height: "220px", objectFit: "cover" }}
                                     />
                                 </div>
-
                                 <div className="card-body text-center">
-                                    <h5>{bestSellingProducts.name}</h5>
+                                    <h5>{product.name}</h5>
 
                                     <p className="fw-bold text-danger">
-                                        {bestSellingProducts.price}
+                                        {product.price}
                                     </p>
 
                                     <button
@@ -175,7 +208,7 @@ function Welcome() {
                 <div className="row g-4">
                     {bestSellingProducts.map((bestSellingProducts) => (
                         <div className="col-md-3" key={bestSellingProducts.id}>
-                            <div className="card border-0 shadow-sm">
+                            <div className="card border-0 shadow-sm product-card">
                                 <div className="position-relative bg-light p-3">
                                     <span
                                         className="badge bg-danger position-absolute"
@@ -196,7 +229,7 @@ function Welcome() {
                                     <img
                                         src={bestSellingProducts.image}
                                         alt={bestSellingProducts.name}
-                                        className="card-img-top"
+                                        className="card-img-top product-image"
                                         style={{ height: "220px", objectFit: "cover" }}
                                     />
                                 </div>
