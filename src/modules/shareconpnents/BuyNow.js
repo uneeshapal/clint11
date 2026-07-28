@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 function Checkout() {
 
   const { state } = useLocation();
+  const navigate = useNavigate();
   console.log(state);
   const product = state || {
     id: 0,
@@ -32,33 +35,78 @@ function Checkout() {
     });
   };
 
-  const placeOrder = () => {
+ const placeOrder = () => {
+  const email = sessionStorage.getItem("currentuser");
 
-    axios.post("http://localhost:8700/placeorder", {
+if (!email) {
+  toast.warning("Please Login or Register First");
+  return;
+}
 
-      email: sessionStorage.getItem("currentuser"),
+  if (
+    order.name === "" ||
+    order.phone === "" ||
+    order.address === "" ||
+    order.city === "" ||
+    order.state === "" ||
+    order.pincode === ""
+  ) {
+    toast.warning("Please fill all the details first");
+    return;
+  }
 
-     productid: product.productid,
-      productname: product.name,
-      price: product.price,
-      image: product.image,
-      quantity: 1,
-
+// UPI Payment
+if (order.payment === "UPI") {
+  navigate("/payment", {
+    state: {
+      ...product,
       ...order
+    }
+  });
+  return;
+}
 
-    })
-      .then((res) => {
-        alert("Order Placed Successfully");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+// Card Payment
+if (order.payment === "Card") {
+  navigate("/card-payment", {
+    state: {
+      ...product,
+      ...order
+    }
+  });
+  return;
+}
+ axios.post("http://localhost:8700/placeorder", {
 
-  };
+  email: email,
+
+    productid: product.productid,
+    productname: product.name,
+    price: product.price,
+    image: product.image,
+    quantity: 1,
+
+    ...order
+
+  })
+  .then(() => {
+
+    toast.success("Order Placed Successfully 🎉");
+
+  })
+  .catch((err) => {
+
+    console.log(err);
+    toast.error("Something went wrong");
+
+  });
+
+};
 
   return (
+      
     <div className="container py-5">
-
+<ToastContainer />
       <div className="row">
 
         <div className="col-md-7">

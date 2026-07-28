@@ -145,7 +145,15 @@ function Welcome() {
                 <div className="row g-4">
                     {products.map((product) => (
                         <div className="col-md-3" key={product.id}>
-                            <div className="card border-0 shadow-sm product-card">
+                            <div
+                                className="card border-0 shadow-sm product-card"
+                                style={{ cursor: "pointer" }}
+                                onClick={() =>
+                                    navigate("/women/product", {
+                                        state: product,
+                                    })
+                                }
+                            >
                                 <div className="position-relative bg-light p-3">
                                     <span
                                         className="badge bg-danger position-absolute"
@@ -177,14 +185,7 @@ function Welcome() {
                                         {product.price}
                                     </p>
 
-                                    <button
-                                        className="btn btn-warning w-100"
-                                        onClick={() =>
-                                            navigate("/women/product", {
-                                                state: product,
-                                            })
-                                        }
-                                    >
+                                    <button className="btn btn-warning w-100">
                                         View Details
                                     </button>
                                 </div>

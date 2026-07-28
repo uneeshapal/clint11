@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 function Cart() {
@@ -53,16 +55,16 @@ function Cart() {
     setCartItems(cartItems.filter((item) => item._id !== id));
   };
 
-  const subtotal = cartItems.reduce(
-    (total, item) =>
-      total +
-      parseFloat(item.price.replace("$", "")) * item.quantity,
-    0
-  );
+const subtotal = cartItems.reduce(
+  (total, item) =>
+    total +
+    Number(item.price.replace(/[^\d.]/g, "")) * item.quantity,
+  0
+);
 
   return (
     <div className="container py-5">
-
+ <ToastContainer />
       <h2 className="text-center fw-bold mb-4">
         🛒 My Shopping Cart
       </h2>
@@ -160,10 +162,10 @@ function Cart() {
                 <div className="col-md-2 text-center">
 
                   <h5>
-                    ₹{
-                      parseFloat(item.price.replace("$", "")) *
-                      item.quantity
-                    }
+               ₹{
+  Number(item.price.replace(/[^\d.]/g, "")) *
+  item.quantity
+}
                   </h5>
 
                 </div>
@@ -206,11 +208,18 @@ function Cart() {
 <button
   className="btn btn-success"
   onClick={() => {
-    console.log("Sending:", cartItems[0]);
+
+    if (selectedItems.length === 0) {
+  toast.warning("Please select a product");
+  return;
+}
+
+    console.log("Sending:", selectedItems[0]);
 
     navigate("/women/product/buynow", {
-      state: cartItems[0]
+      state: selectedItems[0]
     });
+
   }}
 >
   Checkout

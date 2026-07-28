@@ -1,5 +1,5 @@
 // src/modules/sharecomponents/ProductDetails.js
-
+import { ToastContainer, toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -26,12 +26,12 @@ const addtocart = () => {
     color,
     size
   })
-  .then(() => {
-    alert("Product Added To Cart");
+  .then((res) => {
+    toast.success(" Product Added To Cart");
   })
   .catch((err) => {
     console.log(err);
-    alert("Something went wrong");
+    toast.error("Something went wrong");
   });
 
 };
@@ -40,7 +40,7 @@ const addtocart = () => {
   return (
 
  <>
-
+ <ToastContainer position="top-right" autoClose={2000} />
 
   <div className="container py-5">
     <div className="row bg-white shadow rounded p-4">
@@ -172,12 +172,14 @@ onClick={()=>setQuantity(quantity+1)}
   <button
     className="btn btn-success mt-2"
     onClick={() => {
-      if (pincode.length === 6) {
-        alert("Delivery Available");
-      } else {
-        alert("Enter Valid Pincode");
-      }
-    }}
+  if (pincode.trim() === "") {
+    toast.warning("Please Enter Pincode");
+  } else if (pincode.length !== 6) {
+    toast.error(" Enter Valid 6 Digit Pincode");
+  } else {
+    toast.success("Delivery Available");
+  }
+}}
   >
     Check Delivery
   </button>

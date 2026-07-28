@@ -13,13 +13,15 @@ import ProductCard from "./modules/shareconpnents/Product.js";
 import BuyNow from "./modules/shareconpnents/BuyNow.js";
 import Dashboard from "./modules/users/userconponents/UserProfile.js";
 import UserCart from "./modules/users/userconponents/UserCart.js";
-import WishList from "./modules/users/ath/WishList.js";
+// import WishList from "./modules/users/ath/WishList.js";
 import Error from "./modules/shareconpnents/ErrorPage.js";
 import EletronicsCollection from "./modules/shareconpnents/AppEletronic.js";
 import MedicineCollection from "./modules/shareconpnents/AppMedicine.js";
 import BeautCollection from "./modules/shareconpnents/Appbeauty.js";
 import SportsCollection from "./modules/shareconpnents/Appsport.js";
 import HomeLifestyle from "./modules/shareconpnents/AppLife.js";
+import Payment from "./modules/shareconpnents/AppPayment.js";
+import CardPayment from "./modules/shareconpnents/AppCardpay.js";
 function App() {
   return (
     <Routes>
@@ -49,16 +51,16 @@ function App() {
         </Route>
 
         {/* eletronic Collections */}
-      
 
-         <Route path="electronics">
+
+        <Route path="electronics">
           <Route index element={<EletronicsCollection />} />
           <Route path="product" element={<ProductCard />} />
           <Route path="product/buynow" element={<BuyNow />} />
         </Route>
 
-     {/* medicine collection */}
-         <Route path="medicine">
+        {/* medicine collection */}
+        <Route path="medicine">
           <Route index element={<MedicineCollection />} />
           <Route path="product" element={<ProductCard />} />
           <Route path="product/buynow" element={<BuyNow />} />
@@ -67,30 +69,30 @@ function App() {
 
         {/* home collection */}
 
-         <Route path="lifestyle">
+        <Route path="lifestyle">
           <Route index element={<HomeLifestyle />} />
           <Route path="product" element={<ProductCard />} />
           <Route path="product/buynow" element={<BuyNow />} />
         </Route>
 
-        
+
         {/* beauty collection */}
-<Route path="beauty">
+        <Route path="beauty">
           <Route index element={<BeautCollection />} />
           <Route path="product" element={<ProductCard />} />
           <Route path="product/buynow" element={<BuyNow />} />
         </Route>
 
 
-        
+
         {/* sport collection */}
-       <Route path="sports">
+        <Route path="sports">
           <Route index element={<SportsCollection />} />
           <Route path="product" element={<ProductCard />} />
           <Route path="product/buynow" element={<BuyNow />} />
         </Route>
 
-       
+
 
         {/* User Pages */}
         <Route path="cart" element={<UserCart />} />
@@ -105,7 +107,20 @@ function App() {
 
       {/* 404 */}
       <Route path="*" element={<Error />} />
+
+
+       {/* payment */}
+     
+   <Route path="payment" element={<Payment />} />
+
+{/* card payment */}
+   <Route path="card-payment" element={<CardPayment />} />
     </Routes>
+
+    
+
+
+
   );
 }
 

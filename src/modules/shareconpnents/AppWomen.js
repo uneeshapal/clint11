@@ -116,7 +116,15 @@ function WomenCollection() {
             <div className="row mt-4">
               {products.map((item) => (
                 <div className="col-md-4 mb-4" key={item.id}>
-                  <div className="card h-100 shadow border-0 rounded-4">
+                  <div
+  className="card h-100 shadow border-0 rounded-4"
+  style={{ cursor: "pointer" }}
+  onClick={() =>
+    navigate("/women/product", {
+      state: item,
+    })
+  }
+>
                     <img
                       src={item.image}
                       alt={item.name}
@@ -130,7 +138,7 @@ function WomenCollection() {
                     <div className="card-body">
 
                       <div className="d-flex justify-content-between">
-                        <span className="badge bg-danger">
+                        <span className="badge bg-success fs-6">
                           {item.discount}
                         </span>
 
@@ -157,25 +165,29 @@ function WomenCollection() {
 
                       <div className="d-grid gap-2 mt-3">
 
-                        <button
+ <button
   className="btn btn-outline-dark"
-  onClick={() =>
+  onClick={(e) => {
+    e.stopPropagation();
     navigate("/women/product", {
       state: item,
-    })
-  }
+    });
+  }}
 >
   <FaShoppingCart /> Add to Cart
 </button>
 
-                        <button
-                          className="btn btn-danger"
-                          onClick={() =>
-                            navigate("/women/product", { state: item })
-                          }
-                        >
-                          Buy Now
-                        </button>
+                    <button
+  className="btn btn-danger"
+  onClick={(e) => {
+    e.stopPropagation();
+    navigate("/women/product", {
+      state: item,
+    });
+  }}
+>
+  Buy Now
+</button>
 
                       </div>
 

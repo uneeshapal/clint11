@@ -121,7 +121,15 @@ function MenCollection() {
 
                 <div className="col-md-4 mb-4" key={item.id}>
 
-                  <div className="card h-100 shadow border-0 rounded-4">
+                  <div
+                    className="card h-100 shadow border-0 rounded-4"
+                    style={{ cursor: "pointer" }}
+                    onClick={() =>
+                      navigate("/men/product", {
+                        state: item,
+                      })
+                    }
+                  >
 
                     <img
                       src={item.image}
@@ -137,7 +145,7 @@ function MenCollection() {
 
                       <div className="d-flex justify-content-between">
 
-                        <span className="badge bg-danger">
+                        <span className="badge bg-success fs-6">
                           {item.discount}
                         </span>
 
@@ -176,22 +184,24 @@ function MenCollection() {
 
                         <button
                           className="btn btn-outline-dark"
-                          onClick={() =>
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate("/men/product", {
                               state: item,
-                            })
-                          }
+                            });
+                          }}
                         >
                           <FaShoppingCart /> Add to Cart
                         </button>
 
                         <button
                           className="btn btn-danger"
-                          onClick={() =>
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate("/men/product", {
                               state: item,
-                            })
-                          }
+                            });
+                          }}
                         >
                           Buy Now
                         </button>
