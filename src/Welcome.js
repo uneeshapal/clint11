@@ -156,7 +156,7 @@ function Welcome() {
                             >
                                 <div className="position-relative bg-light p-3">
                                     <span
-                                        className="badge bg-danger position-absolute"
+                                        className="badge bg-success position-absolute"
                                         style={{ top: "10px", left: "10px" }}
                                     >
                                         -40%
@@ -212,7 +212,7 @@ function Welcome() {
                             <div className="card border-0 shadow-sm product-card">
                                 <div className="position-relative bg-light p-3">
                                     <span
-                                        className="badge bg-danger position-absolute"
+                                        className="badge bg-success position-absolute"
                                         style={{ top: "10px", left: "10px" }}
                                     >
                                         -8%

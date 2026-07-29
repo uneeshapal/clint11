@@ -101,7 +101,15 @@ function HomeLifestyle() {
 
                 <div className="col-md-4 mb-4" key={item.id}>
 
-                  <div className="card shadow border-0 h-100 rounded-4">
+                  <div
+                    className="card shadow border-0 h-100 rounded-4"
+                    style={{ cursor: "pointer" }}
+                    onClick={() =>
+                      navigate("/lifestyle/product", {
+                        state: item,
+                      })
+                    }
+                  >
 
                     <img
                       src={item.image}
@@ -123,11 +131,12 @@ function HomeLifestyle() {
 
                       <button
                         className="btn btn-danger w-100"
-                        onClick={() =>
+                        onClick={(e) => {
+                          e.stopPropagation();
                           navigate("/lifestyle/product", {
                             state: item,
-                          })
-                        }
+                          });
+                        }}
                       >
                         View Details
                       </button>

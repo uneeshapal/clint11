@@ -93,7 +93,15 @@ function SportsCollection() {
             <div className="row mt-4">
               {products.map((item) => (
                 <div className="col-md-4 mb-4" key={item.id}>
-                  <div className="card h-100 shadow border-0 rounded-4">
+                  <div
+                    className="card h-100 shadow border-0 rounded-4"
+                    style={{ cursor: "pointer" }}
+                    onClick={() =>
+                      navigate("/sports/product", {
+                        state: item,
+                      })
+                    }
+                  >
 
                     <img
                       src={item.image}
@@ -116,14 +124,8 @@ function SportsCollection() {
                       <button
                         className="btn text-white w-100"
                         style={{
-                          background:
-                            "linear-gradient(to right,#11998e,#38ef7d)",
+                          background: "linear-gradient(to right,#11998e,#38ef7d)",
                         }}
-                        onClick={() =>
-                          navigate("/sports/product", {
-                            state: item,
-                          })
-                        }
                       >
                         View Details
                       </button>

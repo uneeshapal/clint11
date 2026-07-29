@@ -96,7 +96,15 @@ function Electronics() {
 
                 <div className="col-md-4 mb-4" key={item.id}>
 
-                  <div className="card shadow border-0 h-100">
+                  <div
+                    className="card shadow border-0 h-100"
+                    style={{ cursor: "pointer" }}
+                    onClick={() =>
+                      navigate("/electronics/product", {
+                        state: item,
+                      })
+                    }
+                  >
 
                     <img
                       src={item.image}
@@ -118,11 +126,12 @@ function Electronics() {
 
                       <button
                         className="btn btn-danger w-100"
-                        onClick={() =>
+                        onClick={(e) => {
+                          e.stopPropagation();
                           navigate("/electronics/product", {
                             state: item,
-                          })
-                        }
+                          });
+                        }}
                       >
                         View Details
                       </button>

@@ -90,7 +90,15 @@ function Medicine() {
 
                 <div className="col-md-4 mb-4" key={item.id}>
 
-                  <div className="card shadow border-0 h-100 rounded-4">
+                  <div
+                    className="card shadow border-0 h-100 rounded-4"
+                    style={{ cursor: "pointer" }}
+                    onClick={() =>
+                      navigate("/medicine/product", {
+                        state: item,
+                      })
+                    }
+                  >
 
                     <img
                       src={item.image}
@@ -112,11 +120,12 @@ function Medicine() {
 
                       <button
                         className="btn btn-success w-100"
-                        onClick={() =>
+                        onClick={(e) => {
+                          e.stopPropagation();
                           navigate("/medicine/product", {
                             state: item,
-                          })
-                        }
+                          });
+                        }}
                       >
                         View Details
                       </button>

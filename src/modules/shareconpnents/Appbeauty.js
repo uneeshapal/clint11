@@ -98,7 +98,15 @@ function BeautyCollection() {
             <div className="row mt-4">
               {products.map((item) => (
                 <div className="col-md-4 mb-4" key={item.id}>
-                  <div className="card h-100 shadow border-0 rounded-4">
+                  <div
+                    className="card h-100 shadow border-0 rounded-4"
+                    style={{ cursor: "pointer" }}
+                    onClick={() =>
+                      navigate("/beauty/product", {
+                        state: item,
+                      })
+                    }
+                  >
 
                     <img
                       src={item.image}
@@ -121,14 +129,14 @@ function BeautyCollection() {
                       <button
                         className="btn text-white w-100"
                         style={{
-                          background:
-                            "linear-gradient(to right,#ff758c,#ff7eb3)",
+                          background: "linear-gradient(to right,#ff758c,#ff7eb3)",
                         }}
-                        onClick={() =>
+                        onClick={(e) => {
+                          e.stopPropagation();
                           navigate("/beauty/product", {
                             state: item,
-                          })
-                        }
+                          });
+                        }}
                       >
                         View Details
                       </button>

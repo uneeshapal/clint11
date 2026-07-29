@@ -5,6 +5,7 @@ import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { baseurl } from "../../../services/Urlpath.js";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "../../shareconpnents/AppHeader";
@@ -12,7 +13,7 @@ import Footer from "../../shareconpnents/AppFooter";
 
 
 
-const baseurl = "http://localhost:8700";
+// const baseurl = "http://localhost:8700";
 
 function Register() {
     const mynav = useNavigate();
