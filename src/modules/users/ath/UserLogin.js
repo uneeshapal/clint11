@@ -73,7 +73,7 @@ function Login() {
                 <img
                     src="https://i.pinimg.com/originals/33/50/05/335005b8eab00e041475d300c1478c4b.gif"
                     alt=""
-                    className="img-fluid"
+                    className="img-fluid d-none d-md-block"
                     style={{
                         width: "50%",
                         height: "350px",
@@ -83,7 +83,7 @@ function Login() {
 
               
                 <ToastContainer />
-                <div className="card p-4 shadow" style={{ width: "350px" }}>
+                <div className="card shadow p-4 w-100" style={{ maxWidth: "380px" }}>
 
 
                     <h2 className="text-center mb-4">Login</h2>

@@ -47,7 +47,7 @@ const mysubmit = async (data) => {
                 <img
                     src="https://i.pinimg.com/originals/33/50/05/335005b8eab00e041475d300c1478c4b.gif"
                     alt=""
-                    className="img-fluid"
+                    className="img-fluid d-none d-md-block"
                     style={{
                         width: "50%",
                         height: "350px",
