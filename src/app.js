@@ -22,6 +22,17 @@ import SportsCollection from "./modules/shareconpnents/Appsport.js";
 import HomeLifestyle from "./modules/shareconpnents/AppLife.js";
 import Payment from "./modules/shareconpnents/AppPayment.js";
 import CardPayment from "./modules/shareconpnents/AppCardpay.js";
+import AdminLogin from "../src/modules/admin/Adminlogin.js";
+import AdminDashboard from "../src/modules/admin/AdminDashboard.js";
+// import AdminSidebar from "../src/modules/admin/AdminSidebar.js";
+// import AdminNavbar from "../src/modules/admin/AdminNavbar.js";
+import AdminProducts from "../src/modules/admin/AdminProduct.js";
+import AdminAddProduct from "../src/modules/admin/AdminAddProduct.js";
+import AdminOrder from "./modules/admin/AdminOrder.js";
+import AdminEditProduct from "./modules/admin/AdminEdit.js";
+import AdminRegister from "./modules/admin/AdminRegister.js";
+
+
 function App() {
   return (
     <Routes>
@@ -115,6 +126,19 @@ function App() {
 
 {/* card payment */}
    <Route path="card-payment" element={<CardPayment />} />
+
+{/* admin */}
+<Route path="/admin/login" element={<AdminLogin />} />
+<Route path="/admin/register" element={<AdminRegister />} />
+
+
+<Route path="/admin" element={<AdminDashboard />}>
+  <Route index element={<AdminProducts />} />
+  <Route path="products" element={<AdminProducts />} />
+  <Route path="add-product" element={<AdminAddProduct />} />
+  <Route path="edit-product/:id" element={<AdminEditProduct />} />
+  <Route path="orders" element={<AdminOrder />} />
+</Route>
     </Routes>
 
     

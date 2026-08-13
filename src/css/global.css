@@ -151,3 +151,174 @@ html,body,#root{
     padding:0;
     overflow-x:hidden;
 }
+/* admin css */
+/* ============================= */
+/* Login Dropdown */
+/* ============================= */
+
+.login-dropdown {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    width: 180px;
+    background: white;
+    border-radius: 8px;
+    padding: 8px 0;
+    z-index: 2000;
+    border: 1px solid #eee;
+}
+
+.login-dropdown .dropdown-item {
+    width: 100%;
+    border: none;
+    background: white;
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.login-dropdown .dropdown-item:hover {
+    background: #f5f5f5;
+    color: #db4444;
+}
+
+
+/* ============================= */
+/* Home Hero Section */
+/* ============================= */
+/* ============================= */
+/* HOME TOP SECTION */
+/* ============================= */
+
+.home-top-section {
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+/* Sidebar */
+
+.shop-sidebar {
+  height: 100%;
+  min-height: 100%;
+}
+
+.shop-sidebar h4 {
+  font-size: 20px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #222;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 9px 8px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.sidebar-link:hover {
+  background: #db4444;
+  color: white;
+  padding-left: 13px;
+}
+
+/* ============================= */
+/* HERO */
+/* ============================= */
+
+.home-top-section .carousel img {
+  height: 305px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.home-top-section .carousel {
+  height: 305px;
+}
+
+.home-top-section .carousel-inner {
+  height: 305px;
+}
+
+.home-top-section .carousel-item {
+  height: 305px;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* ============================= */
+/* FLASH SALES */
+/* ============================= */
+
+.flash-sale-section {
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+/* Flash heading */
+
+.flash-sale-section h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* Search + category */
+
+.flash-sale-section .row.mb-4 {
+  margin-bottom: 15px !important;
+}
+
+/* Product card */
+
+.product-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* ============================= */
+/* BEST SELLING */
+/* ============================= */
+
+.best-selling-section {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.best-selling-section h2 {
+  font-size: 22px;
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media (max-width: 991px) {
+
+  .home-top-section .carousel,
+  .home-top-section .carousel-inner,
+  .home-top-section .carousel-item,
+  .home-top-section .carousel img {
+    height: 250px;
+  }
+
+}

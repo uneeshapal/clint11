@@ -57,7 +57,7 @@ const mysubmit = async (data) => {
 
                 <ToastContainer />
 
-                <div className="card p-4 shadow" style={{ width: "450px" }}>
+                <div className="card shadow p-4 w-100" style={{ maxWidth: "450px" }}>
                     <h2 className="text-center mb-4">Register</h2>
 
                     <form onSubmit={handleSubmit(mysubmit)}>
@@ -139,7 +139,7 @@ const mysubmit = async (data) => {
 
                         {/* Gender */}
                         <div className="row">
-                            <div className="col-md-6 mb-3">
+                            <div className="col-md-12 mb-3">
                                 <select
                                     className="form-select"
                                     {...register("gender", {
@@ -156,7 +156,7 @@ const mysubmit = async (data) => {
                             </div>
 
                             <div className="col-md-6 mb-3">
-                                <select
+                                {/* <select
                                     className="form-select"
                                     {...register("role", {
                                         required: "Please select Buyer or Seller",
@@ -165,7 +165,7 @@ const mysubmit = async (data) => {
                                     <option value="">Select Role</option>
                                     <option value="Buyer">Buyer</option>
                                     <option value="Seller">Seller</option>
-                                </select>
+                                </select> */}
 
                                 <p className="text-danger">{errors.role?.message}</p>
                             </div>
@@ -176,7 +176,9 @@ const mysubmit = async (data) => {
                             <span className="input-group-text">
                                 <FaLock />
                             </span>
+                             
 
+                             
                             <input
                                 type="password"
                                 className="form-control"

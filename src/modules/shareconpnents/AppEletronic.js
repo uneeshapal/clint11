@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Sidebar from "./AppSidebar";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -7,64 +8,25 @@ function Electronics() {
 
   const navigate = useNavigate();
 
-  const products = [
-    {
-      id: 1,
-      name: "Wireless Headphones",
-      price: "₹1999",
-      image:
-        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
-    },
-    {
-      id: 2,
-      name: "Smart Watch",
-      price: "₹2999",
-      image:
-        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
-    },
-    {
-      id: 3,
-      name: "DSLR Camera",
-      price: "₹45999",
-      image:
-        "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500",
-    },
-    {
-      id: 4,
-      name: "Gaming Laptop",
-      price: "₹69999",
-      image:
-        "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500",
-    },
-    {
-      id: 5,
-      name: "Bluetooth Speaker",
-      price: "₹1499",
-      image:
-        "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=500",
-    },
-    {
-      id: 6,
-      name: "iPhone",
-      price: "₹79999",
-      image:
-        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500",
-    },
-    {
-      id: 7,
-      name: "LED TV",
-      price: "₹39999",
-      image:
-        "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=500",
-    },
-    {
-      id: 8,
-      name: "Gaming Mouse",
-      price: "₹999",
-      image:
-        "https://images.unsplash.com/photo-1527814050087-3793815479db?w=500",
-    },
-  ];
+const [products, setProducts] = useState([]);
+
+useEffect(() => {
+  getProducts();
+}, []);
+
+const getProducts = async () => {
+  try {
+    const res = await axios.get("http://localhost:8700/products");
+
+    const electronicsProducts = res.data.products.filter(
+      (item) => item.category === "Electronics"
+    );
+
+    setProducts(electronicsProducts);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
   return (
     <>
@@ -72,7 +34,10 @@ function Electronics() {
 
         <div className="row">
 
-          <Sidebar />
+          {/* Sidebar */}
+<div className="col-md-3">
+  <Sidebar />
+</div>
 
           <div className="col-md-9">
 
@@ -94,7 +59,7 @@ function Electronics() {
 
               {products.map((item) => (
 
-                <div className="col-md-4 mb-4" key={item.id}>
+                <div className="col-md-4 mb-4" key={item._id}>
 
                   <div
                     className="card shadow border-0 h-100"
@@ -121,7 +86,7 @@ function Electronics() {
                       <h5>{item.name}</h5>
 
                       <h6 className="text-danger fw-bold">
-                        {item.price}
+                        ₹{item.price}
                       </h6>
 
                       <button

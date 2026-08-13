@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { FaHeart, FaStar, FaShoppingCart } from "react-icons/fa";
 import Sidebar from "./AppSidebar";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,96 +9,35 @@ function MenCollection() {
 
   const navigate = useNavigate();
 
-  const products = [
-    {
-      id: 1,
-      name: "Denim Jacket",
-      price: "₹1599",
-      oldPrice: "₹2499",
-      discount: "30% OFF",
-      rating: 4.8,
-      image:
-        "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500",
-    },
-    {
-      id: 2,
-      name: "Formal Shirt",
-      price: "₹999",
-      oldPrice: "₹2499",
-      discount: "30% OFF",
-      rating: 4.8,
-      image:
-        "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500",
-    },
-    {
-      id: 3,
-      name: "Leather Shoes",
-      price: "₹2499",
-      oldPrice: "₹2499",
-      discount: "30% OFF",
-      rating: 4.8,
-      image:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
-    },
-    {
-      id: 4,
-      name: "Men's Watch",
-      price: "₹1999",
-      oldPrice: "₹2499",
-      discount: "30% OFF",
-      rating: 4.8,
-      image:
-        "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=500",
-    },
-    {
-      id: 5,
-      name: "Hoodie",
-      price: "₹1299",
-      oldPrice: "₹2499",
-      discount: "30% OFF",
-      rating: 4.8,
-      image:
-        "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500",
-    },
-    {
-      id: 6,
-      name: "Jeans",
-      price: "₹1399",
-      oldPrice: "₹2499",
-      discount: "30% OFF",
-      rating: 4.8,
-      image:
-        "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500",
-    },
-    {
-      id: 7,
-      name: "PS5 Console",
-      price: "₹2199",
-      oldPrice: "₹2499",
-      discount: "30% OFF",
-      rating: 4.8,
-      image:
-        "https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22015298/vpavic_4278_20201030_0120.jpg?quality=90&strip=all&crop=16.666666666667,0,66.666666666667,100",
-    },
-    {
-      id: 8,
-      name: "Leather Wallet",
-      price: "₹799",
-      oldPrice: "₹2499",
-      discount: "30% OFF",
-      rating: 4.8,
-      image:
-        "https://images.unsplash.com/photo-1627123424574-724758594e93?w=500",
-    },
-  ];
+const [products, setProducts] = useState([]);
 
+useEffect(() => {
+  getProducts();
+}, []);
+
+const getProducts = async () => {
+  try {
+    const res = await axios.get("http://localhost:8700/products");
+
+    const menProducts = res.data.products.filter(
+      (item) => item.category === "Men"
+    );
+
+    setProducts(menProducts);
+  } catch (err) {
+    console.log(err);
+  }
+};
   return (
     <>
       <div className="container mt-4">
 
         <div className="row">
 
-          <Sidebar />
+          {/* Sidebar */}
+<div className="col-md-3">
+  <Sidebar />
+</div>
 
           <div className="col-md-9">
 
@@ -119,7 +59,7 @@ function MenCollection() {
 
               {products.map((item) => (
 
-                <div className="col-md-4 mb-4" key={item.id}>
+                <div className="col-md-4 mb-4" key={item._id}>
 
                   <div
                     className="card h-100 shadow border-0 rounded-4"
@@ -164,15 +104,15 @@ function MenCollection() {
                         <FaStar />
                         <FaStar />
 
-                        <span className="text-dark ms-2">
+                        {/* <span className="text-dark ms-2">
                           ({item.rating})
-                        </span>
+                        </span> */}
 
                       </div>
 
                       <h5 className="text-danger fw-bold">
 
-                        {item.price}
+                        ₹{item.price}
 
                         <del className="text-secondary ms-2">
                           {item.oldPrice}

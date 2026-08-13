@@ -1,141 +1,234 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaSearch } from "react-icons/fa";
-
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Sidebar from "./AppSidebar";
 
 function Navbar() {
-const navigate = useNavigate();
-  const location = useLocation();
-  const [search, setSearch] = useState("");
+    const navigate = useNavigate();
+    const location = useLocation();
 
-  // Login/Register page par search hide
-  const hideSearch =
-    location.pathname === "/register" ||
-    location.pathname === "/login";
+    const [search, setSearch] = useState("");
+    const [showSidebar, setShowSidebar] = useState(false);
+    const [showLoginMenu, setShowLoginMenu] = useState(false);
 
-const handleSearch = (e) => {
-  e.preventDefault();
+    const hideSearch =
+        location.pathname === "/register" ||
+        location.pathname === "/login";
 
-  const value = search.toLowerCase().trim();
+    const handleSearch = (e) => {
+        e.preventDefault();
 
-  if (
-    value.includes("women") ||
-    value.includes("dress") ||
-    value.includes("makeup") ||
-    value.includes("handbag")
-  ) {
-    navigate("/women");
-  }
+        const value = search.toLowerCase().trim();
 
- else if (
-  value.includes("jacket") ||
-  value.includes("formal shirt") ||
-  value.includes("shoes") ||
-  value.includes("watch") ||
-  value.includes("hoodie") ||
-  value.includes("jeans") ||
-  value.includes("wallet")
-) {
-  navigate("/men");
-}
-  else if (
-    value.includes("mobile") ||
-    value.includes("phone") ||
-    value.includes("laptop") ||
-    value.includes("camera") ||
-     value.includes("headphone")||
-    value.includes("")
-  ) {
-    navigate("/electronics");
-  }
+        if (
+            value.includes("women") ||
+            value.includes("dress") ||
+            value.includes("makeup") ||
+            value.includes("handbag")
+        ) {
+            navigate("/women");
+        } else if (
+            value.includes("jacket") ||
+            value.includes("shirt") ||
+            value.includes("shoes") ||
+            value.includes("watch") ||
+            value.includes("hoodie") ||
+            value.includes("jeans") ||
+            value.includes("wallet")
+        ) {
+            navigate("/men");
+        } else if (
+            value.includes("mobile") ||
+            value.includes("phone") ||
+            value.includes("laptop") ||
+            value.includes("camera") ||
+            value.includes("headphone")
+        ) {
+            navigate("/electronics");
+        } else if (value.includes("medicine")) {
+            navigate("/medicine");
+        } else {
+            alert("Product Not Found");
+        }
+    };
 
-  else if (
-    value.includes("medicine")
-  ) {
-    navigate("/medicine");
-  }
+    return (
+        <>
+            <nav className="navbar navbar-expand-lg bg-white border-bottom">
+                <div className="container">
 
-  else {
-    alert("Product Not Found");
-  }
-};
+                    {/* Logo */}
+                    <Link
+                        className="navbar-brand fw-bold fs-3 text-danger"
+                        to="/"
+                    >
+                        SmartBuy
+                    </Link>
 
-  return (
-    <nav className="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
-      <div className="container">
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="btn btn-outline-danger ms-2 d-lg-none"
+                        onClick={() => setShowSidebar(true)}
+                    >
+                        ☰
+                    </button>
 
-        {/* Logo */}
-        <Link className="navbar-brand fw-bold fs-3 text-danger" to="/">
-          SmartBuy
-        </Link>
+                    {/* Desktop Navbar */}
+                    <div className="d-none d-lg-flex align-items-center w-100">
 
-        {/* Mobile Toggle */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+                        <ul className="navbar-nav me-auto ms-4">
 
-        <div
-          className="collapse navbar-collapse"
-          id="navbarSupportedContent"
-        >
+                            <li className="nav-item">
+                                <Link
+                                    className="nav-link fw-semibold"
+                                    to="/"
+                                >
+                                    Home
+                                </Link>
+                            </li>
 
-          {/* Menu */}
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link
+                                    className="nav-link fw-semibold"
+                                    to="/about"
+                                >
+                                    Contact
+                                </Link>
+                            </li>
 
-            <li className="nav-item">
-              <Link className="nav-link fw-semibold" to="/">
-                Home
-              </Link>
-            </li>
+                            <li className="nav-item">
+                                <Link
+                                    className="nav-link fw-semibold"
+                                    to="/story"
+                                >
+                                    About
+                                </Link>
+                            </li>
 
-            <li className="nav-item">
-              <Link className="nav-link fw-semibold" to="/about">
-                Contact
-              </Link>
-            </li>
+                        </ul>
 
-            <li className="nav-item">
-              <Link className="nav-link fw-semibold" to="/story">
-                About
-              </Link>
-            </li>
+                        {/* ONLY ONE SEARCH */}
+                        {!hideSearch && (
+                            <form
+                                className="d-flex me-3"
+                                onSubmit={handleSearch}
+                            >
+                                <input
+                                    className="form-control me-2"
+                                    placeholder="Search Products..."
+                                    value={search}
+                                    onChange={(e) =>
+                                        setSearch(e.target.value)
+                                    }
+                                />
 
-          </ul>
+                                <button className="btn btn-danger">
+                                    <FaSearch />
+                                </button>
+                            </form>
+                        )}
 
-          {/* Search */}
-          {!hideSearch && (
-            <form className="d-flex me-3" onSubmit={handleSearch}>
+                        {/* LOGIN DROPDOWN */}
+                        <div className="position-relative">
 
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search Products..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
+                            <button
+                                type="button"
+                                className="btn btn-outline-danger"
+                                onClick={() =>
+                                    setShowLoginMenu(!showLoginMenu)
+                                }
+                            >
+                                Sign In ▾
+                            </button>
 
-              <button className="btn btn-danger" type="submit">
-                <FaSearch />
-              </button>
+                            {showLoginMenu && (
+                                <div
+                                    className="login-dropdown shadow"
+                                    onMouseLeave={() =>
+                                        setShowLoginMenu(false)
+                                    }
+                                >
 
-            </form>
-          )}
+                                    <button
+                                        className="dropdown-item"
+                                        onClick={() => {
+                                            setShowLoginMenu(true);
+                                            navigate("/login");
+                                        }}
+                                    >
+                                        👤 Buyer Login
+                                    </button>
 
-          {/* Sign In */}
-          <Link to="/register" className="btn btn-outline-danger">
-            Sign In
-          </Link>
+                                    <button
+                                        className="dropdown-item"
+                                        onClick={() => {
+                                            setShowLoginMenu(true);
+                                            navigate("/admin/login");
+                                        }}
+                                    >
+                                        🏪 Seller Login
+                                    </button>
 
-        </div>
-      </div>
-    </nav>
-  );
+                                </div>
+                            )}
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </nav>
+
+            {/* Mobile Sidebar */}
+            {showSidebar && (
+                <>
+                    <div
+                        onClick={() => setShowSidebar(false)}
+                        style={{
+                            position: "fixed",
+                            top: 0,
+                            left: 0,
+                            width: "100%",
+                            height: "100%",
+                            background: "rgba(0,0,0,.5)",
+                            zIndex: 999,
+                        }}
+                    />
+
+                    <div
+                        style={{
+                            position: "fixed",
+                            top: 0,
+                            left: 0,
+                            width: "260px",
+                            height: "100vh",
+                            background: "#fff",
+                            zIndex: 1000,
+                            overflowY: "auto",
+                            padding: "20px",
+                        }}
+                    >
+
+                        <button
+                            className="btn btn-danger mb-3"
+                            onClick={() => setShowSidebar(false)}
+                        >
+                            ✕
+                        </button>
+
+                        <Sidebar
+                            mobile={true}
+                            closeSidebar={() =>
+                                setShowSidebar(false)
+                            }
+                        />
+
+                    </div>
+                </>
+            )}
+        </>
+    );
 }
 
 export default Navbar;
