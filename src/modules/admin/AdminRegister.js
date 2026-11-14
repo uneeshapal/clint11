@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -6,10 +6,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import AdminNavbar from "./AdminNavbar";
+import { baseurl } from "../../services/Urlpath.js";
 
 function AdminRegister() {
   const navigate = useNavigate();
-
+  useEffect(() => {
+    sessionStorage.removeItem("admin");
+    sessionStorage.removeItem("adminToken");
+  }, []);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +23,7 @@ function AdminRegister() {
 
     try {
       const res = await axios.post(
-        "http://localhost:8700/admin/register",
+        `${baseurl}/admin/register`,
         {
           name,
           email,
@@ -27,13 +31,15 @@ function AdminRegister() {
         }
       );
 
-      if (res.data.success) {
-        toast.success("Seller Registered Successfully!");
-
-        setTimeout(() => {
-          navigate("/admin/dashboard");
-        }, 1500);
+      if (!res.data.success) {
+        toast.error(res.data.message || "Registration Failed");
+        return;
       }
+
+      toast.success("Seller Registered Successfully");
+      sessionStorage.removeItem("admin");
+      sessionStorage.removeItem("adminToken");
+      navigate("/admin/login");
     } catch (error) {
       console.log("REGISTER ERROR:", error);
 
