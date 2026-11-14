@@ -4,6 +4,7 @@ import axios from "axios";
 import AdminNavbar from "./AdminNavbar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { baseurl } from "../../services/Urlpath.js";
 
 function AdminLogin() {
   const navigate = useNavigate();
@@ -16,13 +17,10 @@ function AdminLogin() {
 
     try {
       const res = await axios.post(
-        "http://localhost:8700/admin/login",
+        `${baseurl}/admin/login`,
         {
           email,
           password,
-        },
-        {
-          withCredentials: true,
         }
       );
 
@@ -42,7 +40,10 @@ function AdminLogin() {
         setTimeout(() => {
           navigate("/admin/products");
         }, 1500);
+        return;
       }
+
+      toast.error(res.data.message || "Login Failed");
     } catch (error) {
       console.log("LOGIN ERROR:", error);
 
