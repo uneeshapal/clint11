@@ -7,6 +7,7 @@ import "../src/css/global.css";
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaHeart } from "react-icons/fa";
+import { baseurl } from "./services/Urlpath.js";
 
 
 function Welcome() {
@@ -23,14 +24,14 @@ function Welcome() {
 
     const getProducts = async () => {
         try {
-            const res = await axios.get("http://localhost:8700/products");
+            const res = await axios.get(`${baseurl}/products`);
 
             if (res.data.success) {
                 setProducts(res.data.products);
             }
 
             const bestRes = await axios.get(
-                "http://localhost:8700/best-selling"
+                `${baseurl}/best-selling`
             );
 
             if (bestRes.data.success) {
